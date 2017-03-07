@@ -1,6 +1,6 @@
 package ProjetoMetci.metci;
 
-public class ComputeServer {
+public class ComputerServer {
 	
 	private String id;
 	private long processors;
@@ -11,7 +11,7 @@ public class ComputeServer {
 	private long currentHd;
 	
 	
-	public ComputeServer (String id, long processors, long ram, long hd) {
+	public ComputerServer (String id, long processors, long ram, long hd) {
 		this.id = id;
 		this.processors = processors;
 		this.ram = ram;
