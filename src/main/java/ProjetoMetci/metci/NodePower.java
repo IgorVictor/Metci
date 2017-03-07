@@ -3,12 +3,10 @@ package ProjetoMetci.metci;
 public class NodePower {
 	private double processor;
 	private double ram;
-	private double hd;
 
-	public NodePower(double processor, double ram, double hd) {
+	public NodePower(double processor, double ram) {
 		this.processor = processor;
 		this.ram = ram;
-		this.hd = hd;
 	}
 
 	public double getProcessor() {
@@ -27,13 +25,4 @@ public class NodePower {
 		this.ram = ram;
 	}
 
-	public double getHd() {
-		return hd;
-	}
-
-	public void setHd(double hd) {
-		this.hd = hd;
-	}
-	
-	
 }

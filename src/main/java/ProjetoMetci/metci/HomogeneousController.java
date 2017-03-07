@@ -8,8 +8,12 @@ public class HomogeneousController {
 		ArrayList<ComputerServer> serverList = new ArrayList<ComputerServer>();
 		
 		for (int i = 0; i < 16; i++) {
-			ComputerServer serve = new ComputerServer(Integer.toString(i), 812.5, 1024.0, 30000.0);
+			ComputerServer server = new ComputerServer(Integer.toString(i), 446.875, 1024.0);
+			
+			serverList.add(server);
 		}
+		
+		
 	}
 	
 }
