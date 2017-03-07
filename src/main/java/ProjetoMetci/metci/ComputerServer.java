@@ -3,15 +3,15 @@ package ProjetoMetci.metci;
 public class ComputerServer {
 	
 	private String id;
-	private long processors;
-	private long ram;
-	private long hd;
-	private long currentProcessor;
-	private long currentRam;
-	private long currentHd;
+	private double processors;
+	private double ram;
+	private double hd;
+	private double currentProcessor;
+	private double currentRam;
+	private double currentHd;
 	
 	
-	public ComputerServer (String id, long processors, long ram, long hd) {
+	public ComputerServer (String id, double processors, double ram, double hd) {
 		this.id = id;
 		this.processors = processors;
 		this.ram = ram;
@@ -21,7 +21,7 @@ public class ComputerServer {
 		this.currentHd = 0;
 	}
 	
-	public void Alocate (long processors, long ram, long hd) {
+	public void Alocate (double processors, double ram, double hd) {
 		this.currentProcessor += processors;
 		this.currentRam += ram;
 		this.currentHd += hd;
@@ -33,7 +33,7 @@ public class ComputerServer {
 				this.hd - this.currentHd);
 	}
 	
-	public void deAlocate (long processors, long ram, long hd) {
+	public void deAlocate (double processors, double ram, double hd) {
 		this.currentProcessor -= processors;
 		this.currentRam -= ram;
 		this.currentHd -= hd;
