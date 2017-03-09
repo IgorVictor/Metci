@@ -1,4 +1,4 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.elements;
 
 import java.lang.Comparable;
 
@@ -9,10 +9,9 @@ public class ComputerServer implements Comparable<ComputerServer>{
 	private double ram;
 	private double currentProcessor;
 	private double currentRam;
-	private double currentHd;
 
 
-	public ComputerServer (int id, double processor, double ram) {
+    public ComputerServer (int id, double processor, double ram) {
 		this.id = id;
 		this.processor = processor;
 		this.ram = ram;
@@ -30,8 +29,10 @@ public class ComputerServer implements Comparable<ComputerServer>{
     }
 
 	public NodePower getRemainingAssets() {
-		return new NodePower(this.processor - this.currentProcessor,
-				this.ram - this.currentRam);
+		return new NodePower(
+		        this.processor - this.currentProcessor,
+				this.ram - this.currentRam
+        );
 	}
 
 	public void deallocatePower(NodePower power) {
@@ -40,6 +41,6 @@ public class ComputerServer implements Comparable<ComputerServer>{
 	}
 
 	public int compareTo(ComputerServer other){
-	    return ((NodePower) this.getRemainingAssets()).compareTo((NodePower) other.getRemainingAssets());
+	    return this.getRemainingAssets().compareTo(other.getRemainingAssets());
     }
 }

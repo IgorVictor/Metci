@@ -1,4 +1,7 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.allocator;
+
+import ProjetoMetci.elements.ComputerServer;
+import ProjetoMetci.elements.VirtualMachine;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -28,11 +31,13 @@ public class VMAllocator {
     /**
      * Normal constructor.
      */
-    private VMAllocator(){}
+    private VMAllocator(){
+        this.setAllocatorAlgorithm(new FirstFitAlgorithm());
+    }
 
     /**
      * Set allocator algorithm to use when allocating VMs.
-     * @param allocator the allocator algorithm to use when allocating VMs.
+     * @param allocatorAlgorithm the allocator algorithm to use when allocating VMs.
      */
     public void setAllocatorAlgorithm(IAllocatorAlgorithm allocatorAlgorithm){
         this.allocatorAlgorithm = allocatorAlgorithm;
@@ -44,7 +49,7 @@ public class VMAllocator {
      */
     public void setComputers(ArrayList<ComputerServer> computers){
         this.computers = computers;
-        this.vms = new PriorityQueue<VirtualMachine>();
+        this.vms = new PriorityQueue<>();
     }
 
     /**

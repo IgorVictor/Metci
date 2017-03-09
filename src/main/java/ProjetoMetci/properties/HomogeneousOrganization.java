@@ -1,10 +1,12 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.properties;
+
+import ProjetoMetci.elements.ComputerServer;
 
 import java.util.ArrayList;
 
-public class HomogeneousController {
+public class HomogeneousOrganization implements IServerOrganization {
 
-	public void start(String filePath, int serverCount) {
+	public ArrayList<ComputerServer> startServers(int serverCount) {
 		ArrayList<ComputerServer> serverList = new ArrayList<ComputerServer>();
 		
 		for (int i = 0; i < serverCount; i++) {
@@ -12,5 +14,7 @@ public class HomogeneousController {
 			
 			serverList.add(server);
 		}
+
+		return serverList;
 	}
 }

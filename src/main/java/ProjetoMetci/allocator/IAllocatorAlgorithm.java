@@ -1,4 +1,7 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.allocator;
+
+import ProjetoMetci.elements.ComputerServer;
+import ProjetoMetci.elements.VirtualMachine;
 
 import java.util.ArrayList;
 
@@ -13,5 +16,5 @@ public interface IAllocatorAlgorithm {
      * @param vm the VM to insert on computers.
      * @return the VM allocated with info about where it was inserted.
      */
-    public VirtualMachine allocateVM(ArrayList<ComputerServer> computers, VirtualMachine vm);
+    VirtualMachine allocateVM(ArrayList<ComputerServer> computers, VirtualMachine vm);
 }

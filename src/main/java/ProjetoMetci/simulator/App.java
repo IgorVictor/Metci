@@ -1,4 +1,4 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.simulator;
 
 /**
  * Hello world!

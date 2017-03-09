@@ -1,4 +1,4 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.elements;
 
 import java.lang.Comparable;
 

@@ -1,4 +1,4 @@
-package ProjetoMetci.metci;
+package ProjetoMetci.elements;
 
 import java.lang.Comparable;
 
@@ -23,7 +23,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * @return whether if the VM has finished its use, or not.
      */
     public boolean isFinished(long timestamp) {
-        return timestamp >= endTime;
+        return timestamp >= this.getEndTime();
     }
 
     /**
