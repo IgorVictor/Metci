@@ -6,17 +6,9 @@ package ProjetoMetci.metci;
 public class VirtualMachine implements Comparable<VirtualMachine> {
 
     private String vmID;
-    private int computerID;
+    private Integer computerID;
     private NodePower power;
-    private long endTime;
-
-    /**
-     * Create a new VM, practical use.
-     * @return new VM
-     */
-    public static VirtualMachine new(){
-        return new VirtualMachine();
-    }
+    private Long endTime;
 
     /**
      * Normal constructor.
@@ -64,8 +56,8 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * Get computer ID, the one that create this VM.
      * @return the ID of computer that creates this VM.
      */
-    public int getComputerID(){
-        return this.computerId;
+    public Integer getComputerID(){
+        return this.computerID;
     }
 
     /**
@@ -100,7 +92,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * Get the time to finish this VM usage.
      * @return the time to finish this VM usage.
      */
-    public long getEndTime(){
+    public Long getEndTime(){
         return this.endTime;
     }
 

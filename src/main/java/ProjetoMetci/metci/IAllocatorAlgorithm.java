@@ -1,5 +1,7 @@
 package ProjetoMetci.metci;
 
+import java.util.ArrayList;
+
 /**
  * Represents an algorithm to allocate VMs to computers.
  */

@@ -22,7 +22,7 @@ public class VMAllocator {
     }
 
     private ArrayList<ComputerServer> computers;
-    private PrioritieQueue<VirtualMachine> vms;
+    private PriorityQueue<VirtualMachine> vms;
     private IAllocatorAlgorithm allocatorAlgorithm;
 
     /**
@@ -35,7 +35,7 @@ public class VMAllocator {
      * @param allocator the allocator algorithm to use when allocating VMs.
      */
     public void setAllocatorAlgorithm(IAllocatorAlgorithm allocatorAlgorithm){
-        this.allocatorAlgorithm = allocator;
+        this.allocatorAlgorithm = allocatorAlgorithm;
     }
 
     /**
@@ -44,7 +44,7 @@ public class VMAllocator {
      */
     public void setComputers(ArrayList<ComputerServer> computers){
         this.computers = computers;
-        this.vms = new PrioritieQueue<VirtualMachine>();
+        this.vms = new PriorityQueue<VirtualMachine>();
     }
 
     /**
@@ -56,7 +56,7 @@ public class VMAllocator {
         this.deallocateOldVMs(actualTime);
 
         // Note: on allocateVM, we'll call the allocatePower on the computer selected.
-        VirtualMachine allocatedVM = this.allocator.allocateVM(this.computers, vm);
+        VirtualMachine allocatedVM = this.allocatorAlgorithm.allocateVM(this.computers, vm);
         this.vms.add(allocatedVM);
     }
 

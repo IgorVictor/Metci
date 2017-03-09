@@ -9,14 +9,6 @@ public class NodePower {
 	private double ram;
 
 	/**
-	 * Create a new VM, practical use.
-	 * @return new VM
-	 */
-	public static NodePower new(){
-		return new NodePower();
-	}
-
-	/**
 	 * Normal constructor.
 	 */
 	public NodePower() {}
