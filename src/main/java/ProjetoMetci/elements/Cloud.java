@@ -11,8 +11,8 @@ import java.util.ArrayList;
  */
 public class Cloud {
 
-    public ArrayList<ComputerServer> serverList;
-    public IServerOrganization serverOrganization;
+    private ArrayList<ComputerServer> serverList;
+    private IServerOrganization serverOrganization;
 
     /**
      * Normal constructor.
@@ -25,7 +25,11 @@ public class Cloud {
         this.serverOrganization = organization;
     }
 
-    public void setServerList(ArrayList<ComputerServer> serverList){
+    public ArrayList<ComputerServer> getServerList(){
+        return this.serverList;
+    }
+
+    private void setServerList(ArrayList<ComputerServer> serverList){
         this.serverList = serverList;
     }
 
@@ -35,3 +39,4 @@ public class Cloud {
     }
 
 }
+O
