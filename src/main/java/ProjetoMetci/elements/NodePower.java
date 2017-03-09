@@ -1,5 +1,6 @@
 package ProjetoMetci.elements;
 
+import javax.xml.soap.Node;
 import java.lang.Comparable;
 
 /**
@@ -58,6 +59,52 @@ public class NodePower implements Comparable<NodePower>{
 	 */
 	public NodePower setRam(double ram) {
 		this.ram = ram;
+		return this;
+	}
+
+	/**
+	 * Calculate sum of this and other NodePower returning the result.
+	 * @param other the other NodePower to sum with this object.
+	 * @return the result of the sum.
+	 */
+	public NodePower plus(NodePower other){
+		NodePower result = new NodePower(0, 0);
+		result.setRam(this.getRam() + other.getRam());
+		result.setProcessor(this.getProcessor() + other.getProcessor());
+		return result;
+	}
+
+	/**
+	 * Update this object with the sum of itself and another NodePower. returning the result.
+	 * @param other the other NodePower to sum with this object.
+	 * @return the result of the sum.
+	 */
+	public NodePower add(NodePower other){
+		this.setRam(this.getRam() + other.getRam());
+		this.setProcessor(this.getProcessor() + other.getProcessor());
+		return this;
+	}
+
+	/**
+	 * Calculate subtraction of this and other NodePower returning the result.
+	 * @param other the other NodePower to subtract with this object.
+	 * @return the result of the sum.
+	 */
+	public NodePower minus(NodePower other){
+		NodePower result = new NodePower(0, 0);
+		result.setRam(this.getRam() - other.getRam());
+		result.setProcessor(this.getProcessor() - other.getProcessor());
+		return result;
+	}
+
+	/**
+	 * Update this object with the subtraction of itself and another NodePower. returning the result.
+	 * @param other the other NodePower to subtraction with this object.
+	 * @return the result of the sum.
+	 */
+	public NodePower subtract(NodePower other){
+		this.setRam(this.getRam() - other.getRam());
+		this.setProcessor(this.getProcessor() - other.getProcessor());
 		return this;
 	}
 
