@@ -3,10 +3,10 @@ package ProjetoMetci.metci;
 /**
  * Class to model a VM.
  */
-public class VirtualMachine {
+public class VirtualMachine implements Comparable<VirtualMachine> {
 
     private String vmID;
-    private String computerID;
+    private int computerID;
     private NodePower power;
     private long endTime;
 
@@ -55,7 +55,7 @@ public class VirtualMachine {
      * @param id the ID of computer that creates this VM.
      * @return the VM itself for continuous setting.
      */
-    public VirtualMachine setComputerID(String id){
+    public VirtualMachine setComputerID(int id){
         this.computerID = id;
         return this;
     }
@@ -64,7 +64,7 @@ public class VirtualMachine {
      * Get computer ID, the one that create this VM.
      * @return the ID of computer that creates this VM.
      */
-    public String getComputerID(){
+    public int getComputerID(){
         return this.computerId;
     }
 
@@ -102,6 +102,10 @@ public class VirtualMachine {
      */
     public long getEndTime(){
         return this.endTime;
+    }
+
+    public int compareTo(VirtualMachine other){
+        return this.endTime.compareTo(other.endTime);
     }
 
     public boolean equals(Object object) {
