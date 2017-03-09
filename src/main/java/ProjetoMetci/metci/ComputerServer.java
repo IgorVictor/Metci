@@ -2,7 +2,7 @@ package ProjetoMetci.metci;
 
 public class ComputerServer {
 
-	private String id;
+	private int id;
 	private double processor;
 	private double ram;
 	private double currentProcessor;
@@ -10,7 +10,7 @@ public class ComputerServer {
 	private double currentHd;
 
 
-	public ComputerServer (String id, double processor, double ram) {
+	public ComputerServer (int id, double processor, double ram) {
 		this.id = id;
 		this.processor = processor;
 		this.ram = ram;
@@ -18,7 +18,7 @@ public class ComputerServer {
 		this.currentRam = 0;
 	}
 
-	public void Alocate (double processor, double ram, double hd) {
+	public void allocatePower(double processor, double ram, double hd) {
 		this.currentProcessor += processor;
 		this.currentRam += ram;
 	}
@@ -28,9 +28,8 @@ public class ComputerServer {
 				this.ram - this.currentRam);
 	}
 
-	public void deAlocate (double processor, double ram, double hd) {
-		this.currentProcessor -= processor;
-		this.currentRam -= ram;
-		this.currentHd -= hd;
+	public void deallocatePower(NodePower power) {
+		this.currentProcessor -= power.getProcessor();
+		this.currentRam -= power.getRam();
 	}
 }
