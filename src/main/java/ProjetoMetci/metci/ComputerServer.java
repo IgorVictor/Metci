@@ -21,8 +21,8 @@ public class ComputerServer implements Comparable<ComputerServer>{
 	}
 
 	public void allocatePower(NodePower power) {
-		this.currentProcessor += power.processor;
-		this.currentRam += power.ram;
+		this.currentProcessor += power.getProcessor();
+		this.currentRam += power.getRam();
 	}
 
 	public int getID() {
@@ -39,7 +39,7 @@ public class ComputerServer implements Comparable<ComputerServer>{
 		this.currentRam -= power.getRam();
 	}
 
-	public boolean compareTo(ComputerServer other){
+	public int compareTo(ComputerServer other){
 	    return ((NodePower) this.getRemainingAssets()).compareTo((NodePower) other.getRemainingAssets());
     }
 }

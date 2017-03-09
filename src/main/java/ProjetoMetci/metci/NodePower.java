@@ -61,7 +61,7 @@ public class NodePower implements Comparable<NodePower>{
 		return this;
 	}
 
-	public boolean compareTo(NodePower other){
+	public int compareTo(NodePower other){
 	    if(this.ram > other.ram || this.processor > other.processor){
 	        return 1;
         } else if (this.ram == other.ram && this.processor == other.processor) {

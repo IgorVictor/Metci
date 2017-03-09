@@ -6,13 +6,14 @@ public class FirstFitAlgorithm implements IAllocatorAlgorithm {
 
     public VirtualMachine allocateVM(ArrayList<ComputerServer> computers, VirtualMachine vm){
         for(ComputerServer computer : computers){
-            if(((NodePower) vm.getPower()).compareTo(computer.getRemainingAssets() < 0)){
+            if(((NodePower) vm.getPower()).compareTo(computer.getRemainingAssets() )< 0){
                 computer.allocatePower(vm.getPower());
                 vm.setComputerID(computer.getID());
 
                 return vm;
             }
         }
+        return null;
     }
 
 }
