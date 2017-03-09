@@ -1,9 +1,9 @@
 package ProjetoMetci.allocator;
 
+import ProjetoMetci.elements.Cloud;
 import ProjetoMetci.elements.ComputerServer;
 import ProjetoMetci.elements.VirtualMachine;
 
-import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /**
@@ -24,7 +24,7 @@ public class VMAllocator {
         return instance;
     }
 
-    private ArrayList<ComputerServer> computers;
+    private Cloud cloud;
     private PriorityQueue<VirtualMachine> vms;
     private IAllocatorAlgorithm allocatorAlgorithm;
 
@@ -45,10 +45,10 @@ public class VMAllocator {
 
     /**
      * Set the list of computers to allocate VMs.
-     * @param computers the list of computers target of allocation.
+     * @param cloud the cloud target of allocation.
      */
-    public void setComputers(ArrayList<ComputerServer> computers){
-        this.computers = computers;
+    public void setCloud(Cloud cloud){
+        this.cloud = cloud;
         this.vms = new PriorityQueue<>();
     }
 
@@ -61,7 +61,7 @@ public class VMAllocator {
         this.deallocateOldVMs(actualTime);
 
         // Note: on allocateVM, we'll call the allocatePower on the computer selected.
-        VirtualMachine allocatedVM = this.allocatorAlgorithm.allocateVM(this.computers, vm);
+        VirtualMachine allocatedVM = this.allocatorAlgorithm.allocateVM(this.cloud.getServerList(), vm);
         this.vms.add(allocatedVM);
     }
 
@@ -92,6 +92,6 @@ public class VMAllocator {
      * @return the computer found of null, if don't exist.
      */
     private ComputerServer findComputer(int computerID){
-        return this.computers.get(computerID);
+        return this.cloud.getServerList().get(computerID);
     }
 }
