@@ -1,9 +1,11 @@
 package ProjetoMetci.metci;
 
+import java.lang.Comparable;
+
 /**
  * Class containing power metrics for Computer and VM, for ordering purposes.
  */
-public class NodePower {
+public class NodePower implements Comparable<NodePower>{
 
 	private double processor;
 	private double ram;
@@ -58,6 +60,16 @@ public class NodePower {
 		this.ram = ram;
 		return this;
 	}
+
+	public boolean compareTo(NodePower other){
+	    if(this.ram > other.ram || this.processor > other.processor){
+	        return 1;
+        } else if (this.ram == other.ram && this.processor == other.processor) {
+	        return 0;
+        } else {
+	        return -1;
+        }
+    }
 
 	public boolean equals(Object object) {
 		if (this == object) return true;

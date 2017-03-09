@@ -1,6 +1,8 @@
 package ProjetoMetci.metci;
 
-public class ComputerServer {
+import java.lang.Comparable;
+
+public class ComputerServer implements Comparable<ComputerServer>{
 
 	private int id;
 	private double processor;
@@ -18,10 +20,14 @@ public class ComputerServer {
 		this.currentRam = 0;
 	}
 
-	public void allocatePower(double processor, double ram, double hd) {
-		this.currentProcessor += processor;
-		this.currentRam += ram;
+	public void allocatePower(NodePower power) {
+		this.currentProcessor += power.processor;
+		this.currentRam += power.ram;
 	}
+
+	public int getID() {
+	    return this.id;
+    }
 
 	public NodePower getRemainingAssets() {
 		return new NodePower(this.processor - this.currentProcessor,
@@ -32,4 +38,8 @@ public class ComputerServer {
 		this.currentProcessor -= power.getProcessor();
 		this.currentRam -= power.getRam();
 	}
+
+	public boolean compareTo(ComputerServer other){
+	    return ((NodePower) this.getRemainingAssets()).compareTo((NodePower) other.getRemainingAssets());
+    }
 }

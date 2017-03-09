@@ -1,5 +1,7 @@
 package ProjetoMetci.metci;
 
+import java.lang.Comparable;
+
 /**
  * Class to model a VM.
  */
