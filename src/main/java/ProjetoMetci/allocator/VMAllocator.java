@@ -1,7 +1,7 @@
 package ProjetoMetci.allocator;
 
 import ProjetoMetci.elements.Cloud;
-import ProjetoMetci.elements.ComputerServer;
+import ProjetoMetci.elements.ComputeServer;
 import ProjetoMetci.elements.VirtualMachine;
 
 import java.util.PriorityQueue;
@@ -49,7 +49,7 @@ public class VMAllocator {
      */
     public void setCloud(Cloud cloud){
         this.cloud = cloud;
-        this.vms = new PriorityQueue<>();
+        this.vms = new PriorityQueue<VirtualMachine>();
     }
 
     /**
@@ -78,7 +78,7 @@ public class VMAllocator {
                 this.vms.poll();
 
                 // Free space on computer that the VM was.
-                ComputerServer cs = this.findComputer(oldestVM.getComputerID());
+                ComputeServer cs = this.findComputer(oldestVM.getComputerID());
                 cs.deallocatePower(oldestVM.getPower());
             } else {
                 break;
@@ -91,7 +91,7 @@ public class VMAllocator {
      * @param computerID the ID of the computer searched.
      * @return the computer found of null, if don't exist.
      */
-    private ComputerServer findComputer(int computerID){
+    private ComputeServer findComputer(int computerID){
         return this.cloud.getServerList().get(computerID);
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class Cloud {
 
-    private ArrayList<ComputerServer> serverList;
+    private ArrayList<ComputeServer> serverList;
     private IServerOrganization serverOrganization;
 
     /**
@@ -35,7 +35,7 @@ public class Cloud {
      * Get the list of computers servers on this cloud.
      * @return the list of computers servers on this cloud.
      */
-    public ArrayList<ComputerServer> getServerList(){
+    public ArrayList<ComputeServer> getServerList(){
         return this.serverList;
     }
 
@@ -44,7 +44,7 @@ public class Cloud {
      * @param serverList the list of computers servers on this cloud.
      * @return the cloud itself for continuous setting.
      */
-    private Cloud setServerList(ArrayList<ComputerServer> serverList){
+    private Cloud setServerList(ArrayList<ComputeServer> serverList){
         this.serverList = serverList;
         return this;
     }

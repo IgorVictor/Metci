@@ -3,7 +3,7 @@ package ProjetoMetci.elements;
 /**
  * Class representing one computer server on the cloud.
  */
-public class ComputerServer implements Comparable<ComputerServer>{
+public class ComputeServer implements Comparable<ComputeServer>{
 
 	private int id;
 	private NodePower initialPower;
@@ -15,7 +15,7 @@ public class ComputerServer implements Comparable<ComputerServer>{
      * @param processor the processor capacity of this computer.
      * @param ram the ram capacity of this computer.
      */
-    public ComputerServer (int id, double processor, double ram) {
+    public ComputeServer (int id, double processor, double ram) {
 		this.setID(id);
 		this.setInitialPower(new NodePower(processor, ram));
 		this.setAllocatedPower(new NodePower(0, 0));
@@ -34,7 +34,7 @@ public class ComputerServer implements Comparable<ComputerServer>{
      * @param id the ID of this computer on the cloud.
      * @return the computer server itself for continuous setting.
      */
-    private ComputerServer setID(int id) {
+    private ComputeServer setID(int id) {
         this.id = id;
         return  this;
     }
@@ -52,7 +52,7 @@ public class ComputerServer implements Comparable<ComputerServer>{
      * @param power the initial power capacity of this computer.
      * @return the computer server itself for continuous setting.
      */
-    public ComputerServer setInitialPower(NodePower power){
+    public ComputeServer setInitialPower(NodePower power){
         this.initialPower = power;
         return this;
     }
@@ -70,7 +70,7 @@ public class ComputerServer implements Comparable<ComputerServer>{
      * @param power the allocated power on this computer for VMs usage.
      * @return the computer server itself for continuous setting.
      */
-    public ComputerServer setAllocatedPower(NodePower power){
+    public ComputeServer setAllocatedPower(NodePower power){
         this.allocatedPower = power;
         return this;
     }
@@ -99,7 +99,7 @@ public class ComputerServer implements Comparable<ComputerServer>{
         this.getAllocatedPower().subtract(power);
 	}
 
-	public int compareTo(ComputerServer other){
+	public int compareTo(ComputeServer other){
 	    return this.getRemainingPower().compareTo(other.getRemainingPower());
     }
 }

@@ -1,6 +1,6 @@
 package ProjetoMetci.properties;
 
-import ProjetoMetci.elements.ComputerServer;
+import ProjetoMetci.elements.ComputeServer;
 
 import java.util.ArrayList;
 
@@ -9,5 +9,5 @@ import java.util.ArrayList;
  */
 public interface IServerOrganization {
 
-    ArrayList<ComputerServer> startServers(int serverCount);
+    ArrayList<ComputeServer> startServers(int serverCount);
 }
