@@ -1,10 +1,14 @@
 package ProjetoMetci.allocator;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
 import ProjetoMetci.elements.Cloud;
 import ProjetoMetci.elements.ComputeServer;
+import ProjetoMetci.elements.Fragment;
+import ProjetoMetci.elements.NodePower;
 import ProjetoMetci.elements.VM;
-
-import java.util.PriorityQueue;
 
 /**
  * Class responsible to allocate VMs on the computers configured on this simulator.
@@ -13,6 +17,12 @@ public class VMAllocator {
 
     private static VMAllocator instance;
 
+    public int serviceNegation;
+    Long actualTime = new Long(0);
+    Long lastCheck = new Long(0);
+    
+    ArrayList<Fragment> fragmentation;
+    
     /**
      * Get unique instance of VMAllocator, or a new one if didn't created.
      * @return unique instance of VMAllocator, or a new one if didn't created.
@@ -33,6 +43,8 @@ public class VMAllocator {
      */
     private VMAllocator(){
         this.setAllocatorAlgorithm(new FirstFitAlgorithm());
+        this.serviceNegation = 0;
+        this.fragmentation = new ArrayList<Fragment>();
     }
 
     /**
@@ -58,14 +70,41 @@ public class VMAllocator {
      * @param vm the vm to allocate.
      */
     public void allocate(long actualTime, VM vm){
-        this.deallocateOldVMs(actualTime);
+    	this.actualTime = actualTime;
+        this.deallocateOldVMs(this.actualTime);
 
         // Note: on allocateVM, we'll call the allocatePower on the computer selected.
         VM allocatedVM = this.allocatorAlgorithm.allocateVM(this.cloud.getServerList(), vm);
-        this.vms.add(allocatedVM);
+        checkFragmentation();
+        if (allocatedVM != null){
+        	this.vms.add(allocatedVM);
+        } else {
+        	serviceNegation++;
+        }
     }
 
-    /**
+    private void checkFragmentation() {
+    	double wastedRam = 0;
+    	double wastedCpu = 0;
+    	for (ComputeServer server : this.cloud.getServerList()) {
+    		if (server.isFull()) {
+    			wastedRam += server.getRemainingPower().getRam();
+    			wastedCpu += server.getRemainingPower().getProcessor();
+    		}
+    		if (server.getRemainingPower().compareTo(new NodePower(0.002, 0.002)) < 0 ) {
+    			server.isFull();
+    		};
+    	}
+    	if (wastedCpu != 0 || wastedRam != 0) {
+    	NodePower wastedPower = new NodePower(wastedCpu, wastedRam);
+    	long timeElapse = this.actualTime - this.lastCheck;
+    	Fragment fragment = new Fragment(timeElapse, wastedPower);
+    	this.fragmentation.add(fragment);
+    	}
+    	this.lastCheck = actualTime;
+    }
+
+	/**
      * Deallocate VMs that has finished their work.
      * @param actualTime the actual time on the servers.
      */
@@ -93,5 +132,19 @@ public class VMAllocator {
      */
     private ComputeServer findComputer(int computerID){
         return this.cloud.getServerList().get(computerID);
+    }
+    
+    public int getServiceNegation() {
+    	return this.serviceNegation;
+    }
+    
+    public NodePower getRemainingCloudPower() {
+    	double cpu = 0;
+    	double ram = 0;
+    	for (ComputeServer server : this.cloud.getServerList()) {
+    		cpu += server.getRemainingPower().getProcessor();
+    		ram += server.getRemainingPower().getRam();
+    	}
+    	return new NodePower(cpu, ram);
     }
 }

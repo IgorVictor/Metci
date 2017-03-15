@@ -14,7 +14,7 @@ public class FirstFitAlgorithm implements IAllocatorAlgorithm {
                 vm.setComputerID(computer.getID());
 
                 return vm;
-            }
+            } 
         }
         return null;
     }

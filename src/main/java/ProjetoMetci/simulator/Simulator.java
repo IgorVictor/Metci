@@ -54,6 +54,9 @@ public class Simulator {
 			vmA.allocate(currentTimeFromFile(currentLine), vm);
 		}
 		bis.close();
+		System.out.println("Negação " + vmA.getServiceNegation());
+		System.out.println("Remaning cpu " +vmA.getRemainingCloudPower().getProcessor());
+		System.out.println("Remaning cpu " +vmA.getRemainingCloudPower().getRam());
     }
     
     public long currentTimeFromFile (String currentLine) {

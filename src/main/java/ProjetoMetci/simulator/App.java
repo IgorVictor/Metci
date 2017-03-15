@@ -1,5 +1,8 @@
 package ProjetoMetci.simulator;
 
+import java.io.IOException;
+
+import ProjetoMetci.allocator.FirstFitAlgorithm;
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
 
 /**
@@ -10,10 +13,16 @@ public class App
 {
     public static void main( String[] args )
     {
-    	String filePath = "C:\\Users\\Igor\\Desktop\\task-eventstotruncate.txt";
-    	int serverCount = 0;
+    	String filePath = "C:\\Users\\Igor\\Desktop\\minitrace.txt";
+    	int serverCount = 1;
     	boolean homogeneousOrganization = true;
-    	IAllocatorAlgorithm algorithm = null;
+    	IAllocatorAlgorithm algorithm = new FirstFitAlgorithm();
         Simulator sim = new Simulator(filePath, serverCount, homogeneousOrganization, algorithm);
+        try {
+			sim.start();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

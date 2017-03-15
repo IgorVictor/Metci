@@ -8,6 +8,7 @@ public class ComputeServer implements Comparable<ComputeServer>{
 	private int id;
 	private NodePower initialPower;
 	private NodePower allocatedPower;
+	private boolean full = false;
 
     /**
      * Creates the computer server.
@@ -97,8 +98,24 @@ public class ComputeServer implements Comparable<ComputeServer>{
      */
 	public void deallocatePower(NodePower power) {
         this.getAllocatedPower().subtract(power);
+        this.full = false;
 	}
 
+	/**
+	 * set this server to full, meaning there is fragmentation
+	 */
+	public void setFull() {
+		this.full = true;
+	}
+	
+	/**
+	 * returns true if the server is full, returns false otherwise
+	 * @return
+	 */
+	public boolean isFull(){
+		return this.full;
+	}
+	
 	public int compareTo(ComputeServer other){
 	    return this.getRemainingPower().compareTo(other.getRemainingPower());
     }
