@@ -10,7 +10,7 @@ public class HomogeneousOrganization implements IServerOrganization {
 		ArrayList<ComputeServer> serverList = new ArrayList<ComputeServer>();
 		
 		for (int i = 0; i < serverCount; i++) {
-			ComputeServer server = new ComputeServer(i, 7150.0/serverCount, 1024.0);
+			ComputeServer server = new ComputeServer(i, 7150.0/serverCount, 7150.0/serverCount);
 			
 			serverList.add(server);
 		}

@@ -23,6 +23,8 @@ public class VMAllocator {
     
     ArrayList<Fragment> fragmentation;
     
+    NodePower maxFragment = new NodePower();
+    
     /**
      * Get unique instance of VMAllocator, or a new one if didn't created.
      * @return unique instance of VMAllocator, or a new one if didn't created.
@@ -92,7 +94,7 @@ public class VMAllocator {
     			wastedCpu += server.getRemainingPower().getProcessor();
     		}
     		if (server.getRemainingPower().compareTo(new NodePower(0.002, 0.002)) < 0 ) {
-    			server.isFull();
+    			server.setFull();
     		};
     	}
     	if (wastedCpu != 0 || wastedRam != 0) {
@@ -100,6 +102,9 @@ public class VMAllocator {
     	long timeElapse = this.actualTime - this.lastCheck;
     	Fragment fragment = new Fragment(timeElapse, wastedPower);
     	this.fragmentation.add(fragment);
+    	if (wastedPower.compareTo(maxFragment) > 0) {
+    		this.maxFragment = wastedPower;
+    	}
     	}
     	this.lastCheck = actualTime;
     }
@@ -147,4 +152,12 @@ public class VMAllocator {
     	}
     	return new NodePower(cpu, ram);
     }
+    
+   public ArrayList<Fragment> getFragmentation() {
+	   return this.fragmentation;
+   }
+   
+   public NodePower getMaxFragmentation() {
+	   return this.maxFragment;
+   }
 }

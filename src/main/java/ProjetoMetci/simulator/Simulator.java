@@ -11,7 +11,9 @@ import java.io.InputStreamReader;
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
 import ProjetoMetci.allocator.VMAllocator;
 import ProjetoMetci.elements.Cloud;
+import ProjetoMetci.elements.Fragment;
 import ProjetoMetci.elements.VM;
+import ProjetoMetci.properties.HeterogeneousOrganization;
 import ProjetoMetci.properties.HomogeneousOrganization;
 
 /**
@@ -31,7 +33,7 @@ public class Simulator {
         cloud.start(serverCount);
         }else {
         	this.cloud = (new Cloud())
-                    .setOrganization(new HomogeneousOrganization());
+                    .setOrganization(new HeterogeneousOrganization());
 
             cloud.start(serverCount);
         }
@@ -49,14 +51,19 @@ public class Simulator {
 
 		BufferedReader bis = new BufferedReader(fis);
 		String currentLine = null;
+		int lineCount = 1;
 		while ((currentLine = bis.readLine())!= null) {
+			System.out.println(lineCount);
 			VM vm = new VM(currentLine);
 			vmA.allocate(currentTimeFromFile(currentLine), vm);
+			lineCount++;
 		}
 		bis.close();
 		System.out.println("Negação " + vmA.getServiceNegation());
 		System.out.println("Remaning cpu " +vmA.getRemainingCloudPower().getProcessor());
-		System.out.println("Remaning cpu " +vmA.getRemainingCloudPower().getRam());
+		System.out.println("Remaning ram " +vmA.getRemainingCloudPower().getRam());
+		int fragCount = 0;
+		System.out.println("biggest fragment was "  + vmA.getMaxFragmentation());
     }
     
     public long currentTimeFromFile (String currentLine) {

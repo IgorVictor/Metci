@@ -6,7 +6,7 @@ import java.lang.Comparable;
 /**
  * Class containing power metrics for Computer and VM, for ordering purposes.
  */
-public class NodePower implements Comparable<NodePower>{
+public class NodePower implements Comparable<NodePower> {
 
 	private double processor;
 	private double ram;
@@ -14,12 +14,18 @@ public class NodePower implements Comparable<NodePower>{
 	/**
 	 * Normal constructor.
 	 */
-	public NodePower() {}
+	public NodePower() {
+		this.processor = 0;
+		this.ram = 0;
+	}
 
 	/**
 	 * Normal constructor.
-	 * @param processor the processor usage.
-	 * @param ram the ram usage.
+	 * 
+	 * @param processor
+	 *            the processor usage.
+	 * @param ram
+	 *            the ram usage.
 	 */
 	public NodePower(double processor, double ram) {
 		this.processor = processor;
@@ -28,6 +34,7 @@ public class NodePower implements Comparable<NodePower>{
 
 	/**
 	 * Get the processor usage.
+	 * 
 	 * @return processor usage.
 	 */
 	public double getProcessor() {
@@ -36,7 +43,9 @@ public class NodePower implements Comparable<NodePower>{
 
 	/**
 	 * Set the processor usage.
-	 * @param processor the processor usage.
+	 * 
+	 * @param processor
+	 *            the processor usage.
 	 * @return the NodePower itself for continuous setting.
 	 */
 	public NodePower setProcessor(double processor) {
@@ -46,6 +55,7 @@ public class NodePower implements Comparable<NodePower>{
 
 	/**
 	 * Get the ram usage.
+	 * 
 	 * @return the ram usage.
 	 */
 	public double getRam() {
@@ -54,7 +64,9 @@ public class NodePower implements Comparable<NodePower>{
 
 	/**
 	 * Set the ram usage.
-	 * @param ram the ram usage.
+	 * 
+	 * @param ram
+	 *            the ram usage.
 	 * @return the NodePower itself for continuous setting.
 	 */
 	public NodePower setRam(double ram) {
@@ -64,10 +76,12 @@ public class NodePower implements Comparable<NodePower>{
 
 	/**
 	 * Calculate sum of this and other NodePower returning the result.
-	 * @param other the other NodePower to sum with this object.
+	 * 
+	 * @param other
+	 *            the other NodePower to sum with this object.
 	 * @return the result of the sum.
 	 */
-	public NodePower plus(NodePower other){
+	public NodePower plus(NodePower other) {
 		NodePower result = new NodePower(0, 0);
 		result.setRam(this.getRam() + other.getRam());
 		result.setProcessor(this.getProcessor() + other.getProcessor());
@@ -75,11 +89,14 @@ public class NodePower implements Comparable<NodePower>{
 	}
 
 	/**
-	 * Update this object with the sum of itself and another NodePower. returning the result.
-	 * @param other the other NodePower to sum with this object.
+	 * Update this object with the sum of itself and another NodePower.
+	 * returning the result.
+	 * 
+	 * @param other
+	 *            the other NodePower to sum with this object.
 	 * @return the result of the sum.
 	 */
-	public NodePower add(NodePower other){
+	public NodePower add(NodePower other) {
 		this.setRam(this.getRam() + other.getRam());
 		this.setProcessor(this.getProcessor() + other.getProcessor());
 		return this;
@@ -87,10 +104,12 @@ public class NodePower implements Comparable<NodePower>{
 
 	/**
 	 * Calculate subtraction of this and other NodePower returning the result.
-	 * @param other the other NodePower to subtract with this object.
+	 * 
+	 * @param other
+	 *            the other NodePower to subtract with this object.
 	 * @return the result of the sum.
 	 */
-	public NodePower minus(NodePower other){
+	public NodePower minus(NodePower other) {
 		NodePower result = new NodePower(0, 0);
 		result.setRam(this.getRam() - other.getRam());
 		result.setProcessor(this.getProcessor() - other.getProcessor());
@@ -98,35 +117,49 @@ public class NodePower implements Comparable<NodePower>{
 	}
 
 	/**
-	 * Update this object with the subtraction of itself and another NodePower. returning the result.
-	 * @param other the other NodePower to subtraction with this object.
+	 * Update this object with the subtraction of itself and another NodePower.
+	 * returning the result.
+	 * 
+	 * @param other
+	 *            the other NodePower to subtraction with this object.
 	 * @return the result of the sum.
 	 */
-	public NodePower subtract(NodePower other){
+	public NodePower subtract(NodePower other) {
 		this.setRam(this.getRam() - other.getRam());
 		this.setProcessor(this.getProcessor() - other.getProcessor());
 		return this;
 	}
 
-	public int compareTo(NodePower other){
-	    if(this.ram > other.ram || this.processor > other.processor){
-	        return 1;
-        } else if (this.ram == other.ram && this.processor == other.processor) {
-	        return 0;
-        } else {
-	        return -1;
-        }
-    }
+	public int compareTo(NodePower other) {
+		if (this.ram > other.ram) {
+			return 1;
+		} else if (this.ram == other.ram) {
+			if (this.processor > other.processor) {
+				return 1;
+			}
+			if (this.processor == other.processor) {
+				return 0;
+			} else {
+				return -1;
+			}
+		}
+		return -1;
+	}
 
 	public boolean equals(Object object) {
-		if (this == object) return true;
-		if (object == null || getClass() != object.getClass()) return false;
-		if (!super.equals(object)) return false;
+		if (this == object)
+			return true;
+		if (object == null || getClass() != object.getClass())
+			return false;
+		if (!super.equals(object))
+			return false;
 
 		NodePower nodePower = (NodePower) object;
 
-		if (Double.compare(nodePower.processor, processor) != 0) return false;
-		if (Double.compare(nodePower.ram, ram) != 0) return false;
+		if (Double.compare(nodePower.processor, processor) != 0)
+			return false;
+		if (Double.compare(nodePower.ram, ram) != 0)
+			return false;
 
 		return true;
 	}
@@ -139,5 +172,9 @@ public class NodePower implements Comparable<NodePower>{
 		temp = Double.doubleToLongBits(ram);
 		result = 31 * result + (int) (temp ^ (temp >>> 32));
 		return result;
+	}
+
+	public String toString() {
+		return "cpu " + this.processor + " ram " + this.ram;
 	}
 }

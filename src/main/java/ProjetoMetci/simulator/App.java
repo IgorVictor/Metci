@@ -2,8 +2,10 @@ package ProjetoMetci.simulator;
 
 import java.io.IOException;
 
+import ProjetoMetci.allocator.BestFitAlgorithm;
 import ProjetoMetci.allocator.FirstFitAlgorithm;
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
+import ProjetoMetci.allocator.WorstFitAlgorithm;
 
 /**
  * Hello world!
@@ -11,12 +13,22 @@ import ProjetoMetci.allocator.IAllocatorAlgorithm;
  */
 public class App 
 {
+	
     public static void main( String[] args )
     {
-    	String filePath = "C:\\Users\\Igor\\Desktop\\minitrace.txt";
-    	int serverCount = 1;
-    	boolean homogeneousOrganization = true;
-    	IAllocatorAlgorithm algorithm = new FirstFitAlgorithm();
+//    	"C:\\Users\\Igor\\Desktop\\tasktest.txt"
+    	IAllocatorAlgorithm algorithm;
+    	String filePath = args[0];
+    	int serverCount = Integer.parseInt(args[1]);
+    	boolean homogeneousOrganization = Boolean.parseBoolean(args[2]);
+   		algorithm = new FirstFitAlgorithm();
+    	if (args[3].equals("1")){
+    		algorithm = new BestFitAlgorithm();	
+    	}
+    	if (args[3].equals("2")){
+    		algorithm = new WorstFitAlgorithm();	
+    	}
+    	
         Simulator sim = new Simulator(filePath, serverCount, homogeneousOrganization, algorithm);
         try {
 			sim.start();
