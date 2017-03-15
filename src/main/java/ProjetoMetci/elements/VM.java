@@ -31,7 +31,7 @@ public class VM implements Comparable<VM> {
     	String[] pieces = traceLine.split(" ");
     	this.vmID = pieces[1] + pieces[2];
     	this.power = new NodePower(Double.parseDouble(pieces[8]), Double.parseDouble(pieces[9]));
-    	this.endTime = Long.parseLong(pieces[7]);
+    	this.endTime = Long.parseLong(pieces[6]);
     	
     }
     
