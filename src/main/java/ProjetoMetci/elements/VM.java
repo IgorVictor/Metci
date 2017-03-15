@@ -5,7 +5,7 @@ import java.lang.Comparable;
 /**
  * Class to model a VM.
  */
-public class VirtualMachine implements Comparable<VirtualMachine> {
+public class VM implements Comparable<VM> {
 
     private String vmID;
     private Integer computerID;
@@ -15,8 +15,26 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
     /**
      * Normal constructor.
      */
-    public VirtualMachine() {}
+    public VM(String vmID, Integer computerID, NodePower power, Long endTime) {
+    	this.vmID = vmID;
+    	this.computerID = computerID;
+    	this.power = power;
+    	this.endTime = endTime;
+    }
 
+    /**
+     * Contructor that receives a line from the trace and creates a VM, will be the one used by default
+     * on this experiment
+     * @param traceLine
+     */
+    public VM(String traceLine) {
+    	String[] pieces = traceLine.split(" ");
+    	this.vmID = pieces[1] + pieces[2];
+    	this.power = new NodePower(Double.parseDouble(pieces[8]), Double.parseDouble(pieces[9]));
+    	this.endTime = Long.parseLong(pieces[7]);
+    	
+    }
+    
     /**
      * Verify if the VM has finished its use.
      * @param timestamp actual time.
@@ -31,7 +49,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * @param id the object ID.
      * @return the VM itself for continuous setting.
      */
-    public VirtualMachine setVmID(String id){
+    public VM setVmID(String id){
         this.vmID = id;
         return this;
     }
@@ -49,7 +67,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * @param id the ID of computer that creates this VM.
      * @return the VM itself for continuous setting.
      */
-    public VirtualMachine setComputerID(int id){
+    public VM setComputerID(int id){
         this.computerID = id;
         return this;
     }
@@ -67,7 +85,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * @param power the power of this VM.
      * @return the VM itself for continuous setting.
      */
-    public VirtualMachine setPower(NodePower power){
+    public VM setPower(NodePower power){
         this.power = power;
         return this;
     }
@@ -85,7 +103,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
      * @param time the time to finish this VM usage.
      * @return the VM itself for continuous setting.
      */
-    public VirtualMachine setEndTime(long time){
+    public VM setEndTime(long time){
         this.endTime = time;
         return this;
     }
@@ -98,7 +116,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
         return this.endTime;
     }
 
-    public int compareTo(VirtualMachine other){
+    public int compareTo(VM other){
         return this.endTime.compareTo(other.endTime);
     }
 
@@ -107,7 +125,7 @@ public class VirtualMachine implements Comparable<VirtualMachine> {
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
 
-        VirtualMachine that = (VirtualMachine) object;
+        VM that = (VM) object;
 
         if (endTime != that.endTime) return false;
         if (vmID != null ? !vmID.equals(that.vmID) : that.vmID != null) return false;

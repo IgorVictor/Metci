@@ -2,7 +2,7 @@ package ProjetoMetci.allocator;
 
 import ProjetoMetci.elements.Cloud;
 import ProjetoMetci.elements.ComputeServer;
-import ProjetoMetci.elements.VirtualMachine;
+import ProjetoMetci.elements.VM;
 
 import java.util.PriorityQueue;
 
@@ -25,7 +25,7 @@ public class VMAllocator {
     }
 
     private Cloud cloud;
-    private PriorityQueue<VirtualMachine> vms;
+    private PriorityQueue<VM> vms;
     private IAllocatorAlgorithm allocatorAlgorithm;
 
     /**
@@ -49,7 +49,7 @@ public class VMAllocator {
      */
     public void setCloud(Cloud cloud){
         this.cloud = cloud;
-        this.vms = new PriorityQueue<VirtualMachine>();
+        this.vms = new PriorityQueue<VM>();
     }
 
     /**
@@ -57,11 +57,11 @@ public class VMAllocator {
      * @param actualTime the actual time on servers.
      * @param vm the vm to allocate.
      */
-    public void allocate(long actualTime, VirtualMachine vm){
+    public void allocate(long actualTime, VM vm){
         this.deallocateOldVMs(actualTime);
 
         // Note: on allocateVM, we'll call the allocatePower on the computer selected.
-        VirtualMachine allocatedVM = this.allocatorAlgorithm.allocateVM(this.cloud.getServerList(), vm);
+        VM allocatedVM = this.allocatorAlgorithm.allocateVM(this.cloud.getServerList(), vm);
         this.vms.add(allocatedVM);
     }
 
@@ -71,7 +71,7 @@ public class VMAllocator {
      */
     private void deallocateOldVMs(long actualTime){
         while (true){
-            VirtualMachine oldestVM = this.vms.peek();
+            VM oldestVM = this.vms.peek();
 
             // Stop if there isn't any VM to deallocate.
             if (oldestVM != null && oldestVM.isFinished(actualTime)){

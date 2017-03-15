@@ -1,7 +1,7 @@
 package ProjetoMetci.allocator;
 
 import ProjetoMetci.elements.ComputeServer;
-import ProjetoMetci.elements.VirtualMachine;
+import ProjetoMetci.elements.VM;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class BestFitAlgorithm implements IAllocatorAlgorithm {
 
     @SuppressWarnings("Duplicates")
-    public VirtualMachine allocateVM(ArrayList<ComputeServer> computers, VirtualMachine vm){
+    public VM allocateVM(ArrayList<ComputeServer> computers, VM vm){
         ArrayList<ComputeServer> servers = new ArrayList<ComputeServer>(computers);
      // Sorting
         Collections.sort(servers, new Comparator<ComputeServer>() {
