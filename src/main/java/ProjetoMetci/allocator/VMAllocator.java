@@ -1,8 +1,8 @@
 package ProjetoMetci.allocator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.PriorityQueue;
+import java.util.Random;
 
 import ProjetoMetci.elements.Cloud;
 import ProjetoMetci.elements.ComputeServer;
@@ -20,6 +20,8 @@ public class VMAllocator {
     public int serviceNegation;
     Long actualTime = new Long(0);
     Long lastCheck = new Long(0);
+    int failureCounter = 0;
+    public boolean hasFailure;
     
     ArrayList<Fragment> fragmentation;
     
@@ -74,7 +76,9 @@ public class VMAllocator {
     public void allocate(long actualTime, VM vm){
     	this.actualTime = actualTime;
         this.deallocateOldVMs(this.actualTime);
-
+        if (this.hasFailure) {
+        	failureTest();
+        }
         // Note: on allocateVM, we'll call the allocatePower on the computer selected.
         VM allocatedVM = this.allocatorAlgorithm.allocateVM(this.cloud.getServerList(), vm);
         checkFragmentation();
@@ -85,6 +89,27 @@ public class VMAllocator {
         }
     }
 
+    private void failureTest() {
+		failureCounter++;
+		if (failureCounter >100000) {
+			failureCounter = 0;
+			Random randomGenerator = new Random();
+			ArrayList<ComputeServer> failedServers = new ArrayList<ComputeServer>();
+			for (ComputeServer server : this.cloud.getServerList()) {
+				int randomInt = randomGenerator.nextInt(10000);
+				if (randomInt <= 3) {
+					failedServers.add(server);
+				}
+			}
+			this.cloud.getServerList().removeAll(failedServers);
+			}
+		
+		
+	}
+
+	/**
+     * Checks each server for fragmentation
+     */
     private void checkFragmentation() {
     	double wastedRam = 0;
     	double wastedCpu = 0;
@@ -123,7 +148,9 @@ public class VMAllocator {
 
                 // Free space on computer that the VM was.
                 ComputeServer cs = this.findComputer(oldestVM.getComputerID());
+                if (cs != null) {
                 cs.deallocatePower(oldestVM.getPower());
+                }
             } else {
                 break;
             }
@@ -160,4 +187,9 @@ public class VMAllocator {
    public NodePower getMaxFragmentation() {
 	   return this.maxFragment;
    }
+
+public void setHasFailure(boolean hasFailure) {
+	this.hasFailure = hasFailure;
+	
+}
 }

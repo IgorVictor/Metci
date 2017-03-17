@@ -29,7 +29,9 @@ public class App
     		algorithm = new WorstFitAlgorithm();	
     	}
     	
-        Simulator sim = new Simulator(filePath, serverCount, homogeneousOrganization, algorithm);
+    	boolean hasFailure = Boolean.parseBoolean(args[4]);
+    	
+        Simulator sim = new Simulator(filePath, serverCount, homogeneousOrganization, algorithm, hasFailure);
         try {
 			sim.start();
 		} catch (IOException e) {

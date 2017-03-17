@@ -24,8 +24,10 @@ public class Simulator {
 	String filePath;
 	Cloud cloud;
 	IAllocatorAlgorithm algorithm;
+	boolean hasFailure;
 	
-    public Simulator(String filePath, int serverCount, boolean homogeneousOrganization, IAllocatorAlgorithm algorithm){
+	
+    public Simulator(String filePath, int serverCount, boolean homogeneousOrganization, IAllocatorAlgorithm algorithm, boolean hasFailure){
         if (homogeneousOrganization){
     	this.cloud = (new Cloud())
                 .setOrganization(new HomogeneousOrganization());
@@ -39,12 +41,14 @@ public class Simulator {
         }
         this.filePath = filePath;
         this.algorithm = algorithm;
+        this.hasFailure = hasFailure;
     }
     
     public void start() throws IOException {
     	VMAllocator vmA = VMAllocator.getInstance();
     	vmA.setAllocatorAlgorithm(this.algorithm);
     	vmA.setCloud(this.cloud);
+    	vmA.setHasFailure(this.hasFailure);
     	
     	FileInputStream input = new FileInputStream(this.filePath);
     	InputStreamReader fis = new InputStreamReader(input);
