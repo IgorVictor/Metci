@@ -132,7 +132,11 @@ public class NodePower implements Comparable<NodePower> {
 
 	public int compareTo(NodePower other) {
 		if (this.ram > other.ram) {
-			return 1;
+			if (this.processor >= other.processor) {
+				return 1;
+			} else {
+				return 0;
+			}
 		} else if (this.ram == other.ram) {
 			if (this.processor > other.processor) {
 				return 1;
@@ -142,8 +146,13 @@ public class NodePower implements Comparable<NodePower> {
 			} else {
 				return -1;
 			}
+		} else {
+		 if (this.processor <= other.processor) {
+			 return -1;
+		 } else {
+			 return 0;
+		 }
 		}
-		return -1;
 	}
 
 	public boolean equals(Object object) {
