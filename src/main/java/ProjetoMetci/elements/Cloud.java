@@ -4,6 +4,7 @@ import ProjetoMetci.properties.HomogeneousOrganization;
 import ProjetoMetci.properties.IServerOrganization;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class that represents the set of computers, that can allocate
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Cloud {
 
-    private ArrayList<ComputeServer> serverList;
+    private HashMap<Integer, ComputeServer> serverList;
     private IServerOrganization serverOrganization;
 
     /**
@@ -35,17 +36,17 @@ public class Cloud {
      * Get the list of computers servers on this cloud.
      * @return the list of computers servers on this cloud.
      */
-    public ArrayList<ComputeServer> getServerList(){
+    public HashMap<Integer, ComputeServer> getServerList(){
         return this.serverList;
     }
 
     /**
      * Set the list of computers servers on this cloud.
-     * @param serverList the list of computers servers on this cloud.
+     * @param hashMap the list of computers servers on this cloud.
      * @return the cloud itself for continuous setting.
      */
-    private Cloud setServerList(ArrayList<ComputeServer> serverList){
-        this.serverList = serverList;
+    private Cloud setServerList(HashMap<Integer, ComputeServer> hashMap){
+        this.serverList = hashMap;
         return this;
     }
 

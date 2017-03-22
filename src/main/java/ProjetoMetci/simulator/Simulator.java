@@ -1,17 +1,16 @@
 package ProjetoMetci.simulator;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.DataInputStream;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
 import ProjetoMetci.allocator.VMAllocator;
 import ProjetoMetci.elements.Cloud;
-import ProjetoMetci.elements.Fragment;
 import ProjetoMetci.elements.VM;
 import ProjetoMetci.properties.HeterogeneousOrganization;
 import ProjetoMetci.properties.HomogeneousOrganization;
@@ -57,7 +56,6 @@ public class Simulator {
 		String currentLine = null;
 		int lineCount = 1;
 		while ((currentLine = bis.readLine())!= null) {
-			System.out.println(lineCount);
 			VM vm = new VM(currentLine);
 			vmA.allocate(currentTimeFromFile(currentLine), vm);
 			lineCount++;
@@ -68,6 +66,17 @@ public class Simulator {
 		System.out.println("Remaning ram " +vmA.getRemainingCloudPower().getRam());
 		int fragCount = 0;
 		System.out.println("biggest fragment was "  + vmA.getMaxFragmentation());
+		
+		String resultString = vmA.getServiceNegation() + " " + vmA.getMaxFragmentation().getProcessor() + " " +
+		vmA.getMaxFragmentation().getRam() + " " + vmA.getNumberOfFailedServers();
+		
+		FileOutputStream output = new FileOutputStream(this.filePath + ".results");
+    	OutputStreamWriter osw = new OutputStreamWriter(output);
+
+		BufferedWriter biw = new BufferedWriter(osw);
+		biw.append(resultString);
+		biw.close();
+		
     }
     
     public long currentTimeFromFile (String currentLine) {

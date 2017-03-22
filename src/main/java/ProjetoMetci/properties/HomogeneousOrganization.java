@@ -1,18 +1,19 @@
 package ProjetoMetci.properties;
 
-import ProjetoMetci.elements.ComputeServer;
-
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import ProjetoMetci.elements.ComputeServer;
 
 public class HomogeneousOrganization implements IServerOrganization {
 
-	public ArrayList<ComputeServer> startServers(int serverCount) {
-		ArrayList<ComputeServer> serverList = new ArrayList<ComputeServer>();
+	public HashMap<Integer, ComputeServer> startServers(int serverCount) {
+		HashMap<Integer, ComputeServer> serverList = new HashMap<Integer, ComputeServer>();
 		
 		for (int i = 0; i < serverCount; i++) {
 			ComputeServer server = new ComputeServer(i, 7150.0/serverCount, 7150.0/serverCount);
 			
-			serverList.add(server);
+			serverList.put(server.getID(), server);
 		}
 
 		return serverList;
