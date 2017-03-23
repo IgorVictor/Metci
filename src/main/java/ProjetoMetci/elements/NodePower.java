@@ -131,27 +131,12 @@ public class NodePower implements Comparable<NodePower> {
 	}
 
 	public int compareTo(NodePower other) {
-		if (this.ram > other.ram) {
-			if (this.processor >= other.processor) {
-				return 1;
-			} else {
-				return 0;
-			}
-		} else if (this.ram == other.ram) {
-			if (this.processor > other.processor) {
-				return 1;
-			}
-			if (this.processor == other.processor) {
-				return 0;
-			} else {
-				return -1;
-			}
+		if (this.processor < other.processor) {
+			return -1;
+		} else if (this.processor > other.processor) {
+			return 1;
 		} else {
-		 if (this.processor <= other.processor) {
-			 return -1;
-		 } else {
-			 return 0;
-		 }
+			return 0;
 		}
 	}
 
