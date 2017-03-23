@@ -1,12 +1,9 @@
 package ProjetoMetci.simulator;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
 import ProjetoMetci.allocator.VMAllocator;
@@ -61,21 +58,10 @@ public class Simulator {
 			lineCount++;
 		}
 		bis.close();
-		System.out.println("Negação " + vmA.getServiceNegation());
-		System.out.println("Remaning cpu " +vmA.getRemainingCloudPower().getProcessor());
-		System.out.println("Remaning ram " +vmA.getRemainingCloudPower().getRam());
-		int fragCount = 0;
-		System.out.println("biggest fragment was "  + vmA.getMaxFragmentation());
 		
 		String resultString = vmA.getServiceNegation() + " " + vmA.getMaxFragmentation().getProcessor() + " " +
 		vmA.getMaxFragmentation().getRam() + " " + vmA.getNumberOfFailedServers();
-		
-		FileOutputStream output = new FileOutputStream(this.filePath + ".results");
-    	OutputStreamWriter osw = new OutputStreamWriter(output);
-
-		BufferedWriter biw = new BufferedWriter(osw);
-		biw.append(resultString);
-		biw.close();
+		System.out.println(resultString);
 		
     }
     
