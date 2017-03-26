@@ -109,7 +109,7 @@ public class VMAllocator {
 			Random randomGenerator = new Random();
 			ArrayList<Integer> failedServers = new ArrayList<Integer>();
 			for (ComputeServer server : this.cloud.getServerList().values()) {
-				int randomInt = randomGenerator.nextInt(10000);
+				int randomInt = randomGenerator.nextInt(1000);
 				if (randomInt <= 3) {
 					failedServers.add(server.getID());
 					numberOfFailedServers++;
