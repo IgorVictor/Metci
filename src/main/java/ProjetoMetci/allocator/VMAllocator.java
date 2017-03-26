@@ -133,8 +133,8 @@ public class VMAllocator {
 				wastedRam += server.getRemainingPower().getRam();
 				wastedCpu += server.getRemainingPower().getProcessor();
 			}
-			if (server.getRemainingPower().compareTo(
-					new NodePower(0.002, 0.002)) < 0) {
+			if ((server.getRemainingPower().getProcessor() < 0.002) || 
+					(server.getRemainingPower().getRam() < 0.002)) {
 				server.setFull();
 			}
 			;
