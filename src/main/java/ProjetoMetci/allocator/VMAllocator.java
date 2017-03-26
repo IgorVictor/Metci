@@ -21,7 +21,7 @@ public class VMAllocator {
 	public int serviceNegation;
 	Long actualTime = new Long(0);
 	Long lastCheck = new Long(0);
-	int failureCounter = 0;
+	int failureCounter = 100000;
 	public boolean hasFailure;
 	
 	int numberOfFailedServers = 0;
