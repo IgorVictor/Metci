@@ -1,12 +1,12 @@
 package ProjetoMetci.allocator;
 
+import ProjetoMetci.elements.ComputeServer;
+import ProjetoMetci.elements.VM;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-
-import ProjetoMetci.elements.ComputeServer;
-import ProjetoMetci.elements.VM;
 
 public class WorstFitAlgorithm implements IAllocatorAlgorithm {
 

@@ -1,10 +1,10 @@
 package ProjetoMetci.allocator;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import ProjetoMetci.elements.ComputeServer;
 import ProjetoMetci.elements.VM;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FirstFitAlgorithm implements IAllocatorAlgorithm {
 

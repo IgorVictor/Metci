@@ -2,7 +2,6 @@ package ProjetoMetci.properties;
 
 import ProjetoMetci.elements.ComputeServer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

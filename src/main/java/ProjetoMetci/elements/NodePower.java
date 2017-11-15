@@ -1,8 +1,5 @@
 package ProjetoMetci.elements;
 
-import javax.xml.soap.Node;
-import java.lang.Comparable;
-
 /**
  * Class containing power metrics for Computer and VM, for ordering purposes.
  */

@@ -3,7 +3,6 @@ package ProjetoMetci.allocator;
 import ProjetoMetci.elements.ComputeServer;
 import ProjetoMetci.elements.VM;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

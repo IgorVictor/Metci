@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<ScappleDocument ID="9C678F85-B99B-41B4-AD1B-B51C5D580D10" Version="1.1">
+   <Notes>
+      <Note Width="231.333" FontSize="12" ID="0" Position="372.0,50.9">
+         <Appearance>
+            <Alignment>Left</Alignment>
+            <Fill>0.934157 0.888319 0.785290</Fill>
+            <Border Weight="1">0.269490 0.164034 0.186694</Border>
+         </Appearance>
+         <Formatting>
+            <FormatRange Bold="Yes">0,14</FormatRange>
+         </Formatting>
+         <String>ComputerServer (Servidor, Máquina)
+ - id
+ - processors
+ - ram
+ - currentProcessor
+ - currentRam
+ - currentHd
+ + alocate(processors, ram)
+ + getRemainingAssets()
+ + deAlocate(processors, ram, hd)</String>
+      </Note>
+      <Note Width="177.778" FontSize="12" ID="1" Position="183.3,309.2">
+         <Appearance>
+            <Alignment>Left</Alignment>
+            <Fill>0.934157 0.888319 0.785290</Fill>
+            <Border Weight="1">0.269490 0.164034 0.186694</Border>
+         </Appearance>
+         <String>HomogeneousController
+ + start(fileParh, serverCount)</String>
+      </Note>
+      <Note Width="310.156" FontSize="12" ID="2" Position="603.3,299.8">
+         <Appearance>
+            <Alignment>Left</Alignment>
+            <Fill>0.934157 0.888319 0.785290</Fill>
+            <Border Weight="1">0.269490 0.164034 0.186694</Border>
+         </Appearance>
+         <Formatting>
+            <FormatRange Bold="Yes">0,9</FormatRange>
+         </Formatting>
+         <String>NodePower (Poder Computacional de um Server)
+ - processor
+ - ram
+ + getProcessor()
+ + setProcessor(processor)
+ + getRam()
+ + setRam(ram)</String>
+      </Note>
+   </Notes>
+   <BackgroundShapes/>
+   <NoteStyles>
+      <Style AffectFontStyle="No" AffectAlignment="No" Name="Brown Bubble" ID="3CE7C8AC-4CCB-40D4-B1C5-6BF7F5E963D8" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <BorderThickness>1</BorderThickness>
+         <BorderColor>0.269490 0.164034 0.186694</BorderColor>
+         <FillColor>0.934157 0.888319 0.785290</FillColor>
+      </Style>
+      <Style AffectFontStyle="Yes" AffectAlignment="Yes" Name="Title Text" ID="5921E753-93C2-4EA3-AC69-DB03C874F00C" AffectTextColor="No" AffectNoteBody="No" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <IsBold>Yes</IsBold>
+         <FontSize>12.0</FontSize>
+      </Style>
+      <Style AffectFontStyle="No" AffectAlignment="No" Name="Blue Bubble" ID="0D5A0251-C575-4D85-AB87-9CCC6E24F756" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <BorderThickness>1</BorderThickness>
+         <BorderColor>0.485893 0.568933 0.756207</BorderColor>
+         <FillColor>0.844068 0.869596 0.923064</FillColor>
+      </Style>
+      <Style AffectFontStyle="No" AffectAlignment="No" Name="Red Text" ID="5DD46157-CC4C-4B11-B558-FF0E839A6B73" AffectTextColor="Yes" AffectNoteBody="No" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <TextColor>1.0 0.0 0.0</TextColor>
+      </Style>
+      <Style AffectFontStyle="No" AffectAlignment="No" Name="Green Bubble" ID="DFE9997C-3E42-48BC-B3EC-D1ADD53A5294" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <BorderThickness>1</BorderThickness>
+         <BorderColor>0.399100 0.583322 0.354864</BorderColor>
+         <FillColor>0.808835 0.872419 0.801343</FillColor>
+      </Style>
+      <Style AffectFontStyle="No" AffectAlignment="No" Name="Pink Bubble" ID="3E28DE4F-3B0D-481C-945B-74DD7A2DDDF4" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <BorderThickness>1</BorderThickness>
+         <BorderColor>0.690303 0.407263 0.550912</BorderColor>
+         <FillColor>0.898329 0.817472 0.865339</FillColor>
+      </Style>
+      <Style AffectFontStyle="No" AffectAlignment="No" Name="Yellow Bubble" ID="64DCA67B-99EE-4807-A103-F101D671D561" AffectTextColor="No" AffectNoteBody="Yes" AffectSticky="No" AffectSize="No" AffectFade="No">
+         <BorderThickness>1</BorderThickness>
+         <BorderColor>0.769436 0.762219 0.390143</BorderColor>
+         <FillColor>0.912963 0.894118 0.644541</FillColor>
+      </Style>
+   </NoteStyles>
+   <UISettings>
+      <BackgroundColor>1.0 0.988006 0.945006</BackgroundColor>
+      <DefaultFont>Helvetica</DefaultFont>
+      <DefaultTextColor>0.0 0.0 0.0</DefaultTextColor>
+   </UISettings>
+   <PrintSettings VerticalPagination="Auto" HorizontalPagination="Clip" Orientation="Portrait" RightMargin="12.000000" BottomMargin="12.000000" HorizontallyCentered="Yes" ScaleFactor="1.000000" PagesAcross="1" PaperType="iso-a4" PagesDown="1" TopMargin="12.000000" Collates="Yes" PaperSize="-1.000000,-1.000000" LeftMargin="12.000000" VerticallyCentered="Yes"/>
+</ScappleDocument>

@@ -1,14 +1,10 @@
 package ProjetoMetci.allocator;
 
+import ProjetoMetci.elements.*;
+
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Random;
-
-import ProjetoMetci.elements.Cloud;
-import ProjetoMetci.elements.ComputeServer;
-import ProjetoMetci.elements.Fragment;
-import ProjetoMetci.elements.NodePower;
-import ProjetoMetci.elements.VM;
 
 /**
  * Class responsible to allocate VMs on the computers configured on this

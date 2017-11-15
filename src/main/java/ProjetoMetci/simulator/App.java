@@ -1,11 +1,11 @@
 package ProjetoMetci.simulator;
 
-import java.io.IOException;
-
 import ProjetoMetci.allocator.BestFitAlgorithm;
 import ProjetoMetci.allocator.FirstFitAlgorithm;
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
 import ProjetoMetci.allocator.WorstFitAlgorithm;
+
+import java.io.IOException;
 
 /**
  * Hello world!

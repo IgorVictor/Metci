@@ -1,16 +1,16 @@
 package ProjetoMetci.simulator;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import ProjetoMetci.allocator.IAllocatorAlgorithm;
 import ProjetoMetci.allocator.VMAllocator;
 import ProjetoMetci.elements.Cloud;
 import ProjetoMetci.elements.VM;
 import ProjetoMetci.properties.HeterogeneousOrganization;
 import ProjetoMetci.properties.HomogeneousOrganization;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 /**
  * Represents our simulator, that will allocate VM on a cloud.

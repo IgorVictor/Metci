@@ -3,7 +3,6 @@ package ProjetoMetci.elements;
 import ProjetoMetci.properties.HomogeneousOrganization;
 import ProjetoMetci.properties.IServerOrganization;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**

@@ -1,9 +1,8 @@
 package ProjetoMetci.properties;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import ProjetoMetci.elements.ComputeServer;
+
+import java.util.HashMap;
 
 public class HomogeneousOrganization implements IServerOrganization {
 

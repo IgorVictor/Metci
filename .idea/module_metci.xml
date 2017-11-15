@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_metci" default="compile.module.metci">
+  <dirname property="module.metci.basedir" file="${ant.file.module_metci}"/>
+  
+  <property name="module.jdk.home.metci" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.metci" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.metci" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.metci" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="metci.output.dir" value="/production/metci"/>
+  <property name="metci.testoutput.dir" value="/test/metci"/>
+  
+  <path id="metci.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="metci.module.production.classpath">
+    <path refid="${module.jdk.classpath.metci}"/>
+  </path>
+  
+  <path id="metci.runtime.production.module.classpath">
+    <pathelement location="${metci.output.dir}"/>
+  </path>
+  
+  <path id="metci.module.classpath">
+    <path refid="${module.jdk.classpath.metci}"/>
+    <pathelement location="${metci.output.dir}"/>
+  </path>
+  
+  <path id="metci.runtime.module.classpath">
+    <pathelement location="${metci.testoutput.dir}"/>
+    <pathelement location="${metci.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.metci">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.metci">
+    <patternset refid="excluded.from.module.metci"/>
+  </patternset>
+  
+  <path id="metci.module.sourcepath">
+    <dirset dir="${module.metci.basedir}/../../metci">
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="metci.module.test.sourcepath">
+    <dirset dir="${module.metci.basedir}/../../metci">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.metci" depends="compile.module.metci.production,compile.module.metci.tests" description="Compile module metci"/>
+  
+  <target name="compile.module.metci.production" depends="register.custom.compilers" description="Compile module metci; production classes">
+    <mkdir dir="${metci.output.dir}"/>
+    <javac2 destdir="${metci.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.metci}/javac">
+      <compilerarg line="${compiler.args.metci}"/>
+      <bootclasspath refid="metci.module.bootclasspath"/>
+      <classpath refid="metci.module.production.classpath"/>
+      <src refid="metci.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.metci"/>
+    </javac2>
+    
+    <copy todir="${metci.output.dir}">
+      <fileset dir="${module.metci.basedir}/../src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.metci.tests" depends="register.custom.compilers,compile.module.metci.production" description="compile module metci; test classes" unless="skip.tests">
+    <mkdir dir="${metci.testoutput.dir}"/>
+    <javac2 destdir="${metci.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.metci}/javac">
+      <compilerarg line="${compiler.args.metci}"/>
+      <bootclasspath refid="metci.module.bootclasspath"/>
+      <classpath refid="metci.module.classpath"/>
+      <src refid="metci.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.metci"/>
+    </javac2>
+    
+    <copy todir="${metci.testoutput.dir}">
+      <fileset dir="${module.metci.basedir}/../src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.metci" description="cleanup module">
+    <delete dir="${metci.output.dir}"/>
+    <delete dir="${metci.testoutput.dir}"/>
+  </target>
+</project>
